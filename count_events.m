@@ -1,6 +1,6 @@
-% count_events(EEG [, eventtypes])
+% [count, eventtypes] = count_events(EEG[, eventtypes])
 %
-%       Counts the number of all or given events in an EEG dataset, and
+%       Counts the number of all or specified events in an EEG dataset, and
 %       returns an array of these numbers plus a cell of the counted types.
 %
 % In:
