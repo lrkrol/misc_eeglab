@@ -1,6 +1,6 @@
 # Miscellaneous EEGLAB functions
 
-- [count_events](#count_events) counts event types in a given dataset
+- [count_events](#count_events) counts event type occurrences in a given dataset
 - [create_eeglabdataset](#create_eeglabdataset) creates an EEGLAB dataset from a given data matrix
 - [get_events_timelocked](#get_events_timelocked) returns the event types around which the current dataset was epoched
 - [move_events](#move_events) moves specified events forward in time to match the latency of a following event
