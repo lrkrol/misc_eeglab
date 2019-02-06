@@ -75,8 +75,8 @@ for e = 1:length(EEG.event)
             continue
         else
             % updating event latency
-            EEG.event(e).latency = EEG.event(e + counter).latency;
             diffs = [diffs, EEG.event(e + counter).latency - EEG.event(e).latency];
+            EEG.event(e).latency = EEG.event(e + counter).latency;
         end
     end
 end
