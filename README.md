@@ -24,7 +24,7 @@ event2 -    39
 Creates a dataset in EEGLAB format from given continuous or epoched data, optionally with a specified chanlocs structure, or with specified channel labels. For epochs, the marker type and the epoch start latency can also be indicated.
 
 ```matlab
-EEG = utl_create_eeglabdataset(randn(3, 512, 100), 512, 'chanlabels', {'C1', 'C2', 'C3'}, 'xmin', -0.2);
+EEG = create_eeglabdataset(randn(3, 512, 100), 512, 'chanlabels', {'C1', 'C2', 'C3'}, 'xmin', -0.2);
 ```
 
 
@@ -33,7 +33,7 @@ Returns a cell array of event types around which the current dataset was epoched
 
 
 ## move_events
-Moves specified events _forward_ in time to have the same latency as the nearest target event. I use this to fix presentation delays when the markers are set before the actual event happens. I [obtain the real event onset using a photodiode](https://bci.plus/photosensor), apply [photo2event](#photo2event) to turn photodiode onsets into events, and then move the affected events to these real onset latencies.
+Moves specified events _forward_ in time to have the same latency as the nearest target event. I use this to fix presentation delays when the markers are set before the actual event happens. I [obtain the real event onsets using a photodiode](https://bci.plus/photosensor), apply [photo2event](#photo2event) to turn photodiode onsets into events, and then move the affected events to these real onset latencies.
 
 ```matlab
 >> EEG = move_events(EEG, 'jump*|grow*', 'photo-onset');
