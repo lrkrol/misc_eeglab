@@ -6,7 +6,7 @@
 - [move_events](#move_events) moves specified events forward in time to match the latency of a following event
 - [photo2event](#photo2event) turns photodiode onsets/offsets into event markers
 - [plot_erp](#plot_erp) is an alternative function to plot ERPs, with some additional statistics
-- [plot_patterns](#plot_patterns) is topoplot wrapper to plot patterns, optionally resized based on a given weight vector
+- [plot_patterns](#plot_patterns) is a topoplot wrapper to plot patterns, optionally resized based on a given weight vector
 
 
 ## count_events
