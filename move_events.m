@@ -1,12 +1,16 @@
 % [EEG, diffs] = move_events(EEG, moveevents, targetevents)
 %
 %       Moves indicated events forward in time to have the same 
-%       latency as the nearest target event.
+%       latency as the nearest following target event.
 %
 %       Note that events are indicated as regular expressions and the
 %       script will move all matches. Use the OR operator to indicate
 %       multiple events, e.g. 'event1|event2|event3', or wildcards, e.g.
 %       'event*'.
+%
+%       Also note that this is currently not checking for epoch boundaries:
+%       events in epoched data could theoretically be moved into another
+%       epoch.
 %
 % In:
 %       EEG - EEGLAB dataset with event structure

@@ -39,6 +39,11 @@
 %
 % Out:  
 %       EEG - the EEGLAB dataset with added markers
+%
+% Usage example:
+%       To add events from photodiode channel at index 65 to EEG, and plot
+%       the results:
+%       >> EEG = photo2event(EEG, 65, 'plot', 1);
 % 
 %                    Copyright 2018 Marius Klug, Laurens R Krol
 %                    Biological Psychology and Neuroergonomics,

@@ -17,7 +17,7 @@
 %
 % Usage example:
 %       >> count_events(EEG);
-%       >> count_events(EEG, {'event1', 'event2'})
+%       >> [count, eventtypes] = count_events(EEG, {'event1', 'event2'});
 % 
 %                    Laurens R Krol, 2016, 2017, 2018
 %                    Team PhyPA, Biological Psychology and Neuroergonomics,

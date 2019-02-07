@@ -14,7 +14,7 @@
 % Out:
 %       events - cell of event types at t=0 for the given epochs
 %
-%                    Copyright 2019 Laurens R Krol
+%                    Copyright 2018 Laurens R Krol
 %                    Team PhyPA, Biological Psychology and Neuroergonomics,
 %                    Berlin Institute of Technology
 %

@@ -1,4 +1,4 @@
-% EEG = utl_create_eeglabdataset(data, srate, varargin)
+% EEG = create_eeglabdataset(data, srate, varargin)
 %
 %       Creates a dataset in EEGLAB format from given continuous or epoched
 %       data.
@@ -23,10 +23,10 @@
 %       EEG - dataset in EEGLAB format
 %
 % Usage example:
-%       >> EEG = utl_create_eeglabdataset(randn(3, 512, 100), 512, ...
+%       >> EEG = create_eeglabdataset(randn(3, 512, 100), 512, ...
 %          'chanlabels', {'C1', 'C2', 'C3'}, 'xmin', -0.2)
 % 
-%                    Copyright 2015-2017 Laurens R Krol
+%                    Copyright 2015, 2017 Laurens R Krol
 %                    Team PhyPA, Biological Psychology and Neuroergonomics,
 %                    Berlin Institute of Technology
 
