@@ -3,7 +3,7 @@
 - [count_events](#count_events) counts event type occurrences in a given dataset
 - [create_eeglabdataset](#create_eeglabdataset) creates an EEGLAB dataset from a given data matrix
 - [get_events_timelocked](#get_events_timelocked) returns the event types around which the current dataset was epoched
-- [move_events](#move_events) moves specified events forward in time to match the latency of a following event
+- [move_events](#move_events) moves specified events in time, either freely or matching the latency of a following event
 - [photo2event](#photo2event) turns photodiode onsets/offsets into event markers
 - [plot_erp](#plot_erp) is an alternative function to plot ERPs, with some additional statistics
 - [plot_patterns](#plot_patterns) is a topoplot wrapper to plot patterns, optionally resized based on a given weight vector
@@ -33,11 +33,14 @@ Returns a cell array of event types around which the current dataset was epoched
 
 
 ## move_events
-Moves specified events _forward_ in time to have the same latency as the nearest target event. I use this to fix presentation delays when the markers are set before the actual event happens. I [obtain the real event onsets using a photodiode](https://bci.plus/photosensor), apply [photo2event](#photo2event) to turn photodiode onsets into events, and then move the affected events to these real onset latencies.
+Moves specified events, either _forward_ in time to have the same latency as the nearest target event, or simply a specified amount (in ms) forward/backward in time. I use this to fix presentation delays when the markers are set before the actual event happens. I [obtain the real event onsets using a photodiode](https://bci.plus/photosensor), apply [photo2event](#photo2event) to turn photodiode onsets into events, and then move the affected events to these real onset latencies.
 
 ```matlab
->> EEG = move_events(EEG, 'jump*|grow*', 'photo-onset');
+>> [EEG, diff] = move_events(EEG, 'jump*|grow*', 'photo-onset');
 moved 1200 events an average of 130.571 ms
+
+>> EEG = move_events(EEG, '^.*target$', 150);
+moved 355 events an average of 150.000 ms
 ```
 
 
@@ -73,3 +76,5 @@ plot_patterns(EEG.icawinv(:,1:6), EEG.chanlocs, 'weights', [3 5 6 6 5 3]);
 ```
 
 ![plot_patterns example](./docs/plot_patterns.png)
+
+It uses EEGLAB's `topoplot` and thus also EEGLAB's default colour scheme. The one used in the above image is one of [Kenneth Moreland's diverging colour maps](https://www.kennethmoreland.com/color-maps) generated using [multigradient](https://github.com/lrkrol/multigradient). See [Benedikt Ehinger's blog post on changing EEGLAB's default colour map](https://benediktehinger.de/blog/science/eeglab-gracefully-overwrite-the-default-colormap).
