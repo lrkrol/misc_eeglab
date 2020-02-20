@@ -7,6 +7,7 @@
 - [photo2event](#photo2event) turns photodiode onsets/offsets into event markers
 - [plot_erp](#plot_erp) is an alternative function to plot ERPs, with some additional statistics
 - [plot_patterns](#plot_patterns) is a topoplot wrapper to plot patterns, optionally resized based on a given weight vector
+- [study_delete_files](#study_delete_files) is a batch file to delete all files associated with a specified study design
 
 
 ## count_events
@@ -78,3 +79,7 @@ plot_patterns(EEG.icawinv(:,1:6), EEG.chanlocs, 'weights', [3 5 6 6 5 3]);
 ![plot_patterns example](./docs/plot_patterns.png)
 
 It uses EEGLAB's `topoplot` and thus also EEGLAB's default colour scheme. The one used in the above image is one of [Kenneth Moreland's diverging colour maps](https://www.kennethmoreland.com/color-maps) generated using [multigradient](https://github.com/lrkrol/multigradient). See [Benedikt Ehinger's blog post on changing EEGLAB's default colour map](https://benediktehinger.de/blog/science/eeglab-gracefully-overwrite-the-default-colormap).
+
+
+## study_delete_files
+Deletes all files in a given directory (**and all subdirectories**) associated with a specified study design; that is, it gets rid of all those files ending in `.icaerp`, `.icaitc`, `.dattimef` etc.  Definitely **use at your own risk**.
