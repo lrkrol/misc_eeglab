@@ -1,5 +1,6 @@
 # Miscellaneous EEGLAB functions
 
+- [balance_events](#balance_events) balances events in a dataset
 - [count_events](#count_events) counts event type occurrences in a given dataset
 - [create_eeglabdataset](#create_eeglabdataset) creates an EEGLAB dataset from a given data matrix
 - [get_events_timelocked](#get_events_timelocked) returns the event types around which the current dataset was epoched
@@ -8,6 +9,15 @@
 - [plot_erp](#plot_erp) is an alternative function to plot ERPs, with some additional statistics
 - [plot_patterns](#plot_patterns) is a topoplot wrapper to plot patterns, optionally resized based on a given weight vector
 - [study_delete_files](#study_delete_files) is a batch file to delete all files associated with a specified study design
+
+
+## balance_events
+Where events of the same type constitute a single class of events, this script balances these classes (i.e. equalises the number of events per class) by randomly relabelling events from the larger class. Given an EEGLAB dataset and a list of event types, it will return an EEGLAB dataset in which there is an equal number of each of these event types. 
+
+```matlab
+>> EEG = balance_events(EEG, {'target', 'nontarget', 'standard'});
+relabelled 384 events; left 72 each of 'target', 'nontarget', 'standard'
+````
 
 
 ## count_events
