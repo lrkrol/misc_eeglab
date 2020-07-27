@@ -4,6 +4,7 @@
 - [count_events](#count_events) counts event type occurrences in a given dataset
 - [create_eeglabdataset](#create_eeglabdataset) creates an EEGLAB dataset from a given data matrix
 - [get_events_timelocked](#get_events_timelocked) returns the event types around which the current dataset was epoched
+- [get_iclabel_components](#get_iclabel_components) returns indices of components classified by ICLabel
 - [move_events](#move_events) moves specified events in time, either freely or matching the latency of a following event
 - [photo2event](#photo2event) turns photodiode onsets/offsets into event markers
 - [plot_erp](#plot_erp) is an alternative function to plot ERPs, with some additional statistics
@@ -41,6 +42,17 @@ EEG = create_eeglabdataset(randn(3, 512, 100), 512, 'chanlabels', {'C1', 'C2', '
 
 ## get_events_timelocked
 Returns a cell array of event types around which the current dataset was epoched. I needed this when working with someone else's epoched data and I didn't know which epochs I was dealing with.
+
+
+## get_iclabel_components
+Returns the indices of components classified by ICLabel, with a certain probability, as being of a certain type. It can select these components by threshold (i.e., all components which have more than x% probability of being a certain type), or by relative majority (i.e., all components which are more probable to be a certain type than any other type).
+
+```matlab
+>> idx = get_iclabel_components(EEG, 'eye')
+idx =
+     1
+     2
+```
 
 
 ## move_events
