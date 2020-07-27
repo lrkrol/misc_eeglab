@@ -1,11 +1,13 @@
-% get_iclabel_components(EEG, type [, threshold])
+% get_iclabel_components(EEG, type [, threshold, rvthreshold])
 %
 %       Returns the indices of components which ICLabel has classified as
 %       a certain type. When a threshold is indicated between 0 and 1, all
 %       components which have an above-threshold probability of belonging
 %       to the indicated type are returned. If no threshold is indicated,
 %       all components are returned for which the indicated type's
-%       probability is higher than the other probabilities.
+%       probability is higher than the other probabilities. It is
+%       additionally possible to exclude components with a residual
+%       variance in their dipole model above a certain threshold.
 %
 %       This script was written with ICLabel 1.2.6.
 %
@@ -23,13 +25,16 @@
 % Optional:
 %       threshold - type probability threshold value between 0 and 1.
 %                   default: relative majority is used instead of threshold
+%       rvthreshold - residual variance threshold. if nonzero, components
+%                     with a residual variance in their dipole model above
+%                     the given threshold are excluded.
 %
 % Out:
 %       idx - the indices of the selected components
-%       otheridx - the indicates of all other components
+%       invidx - the indices of all remaining components
 %
 % Usage example:
-%       >> EEG = get_iclabel_components(EEG, 'brain', 2/3)
+%       >> EEG = get_iclabel_components(EEG, 'brain', [], .15)
 % 
 %                       Laurens R. Krol
 %                       Neuroadaptive Human-Computer Interaction
@@ -56,9 +61,10 @@
 % OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 % USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function [idx, otheridx] = get_iclabel_components(EEG, type, threshold)
+function [idx, invidx] = get_iclabel_components(EEG, type, threshold, rvthreshold)
 
-if nargin == 2, threshold = []; end
+if nargin < 3, threshold = []; end
+if nargin < 4, rvthreshold = []; end
 
 % testing if ICLabel classifications are present
 if ~isfield(EEG.etc, 'ic_classification'), error('no field EEG.etc.ic_classification;\nrun ICLabel first'); end
@@ -92,7 +98,12 @@ else
     idx = find(EEG.etc.ic_classification.ICLabel.classifications(:,type) > threshold);
 end
 
-% separately returning all other components
-otheridx = setdiff(1:size(EEG.icaweights,1), idx);
+if rvthreshold
+    % removing components with a residual variance above rvthreshold
+    idx = setdiff(idx, find([EEG.dipfit.model.rv] > rvthreshold));
+end
+
+% separately returning all nonselected components
+invidx = setdiff(1:size(EEG.icaweights,1), idx);
 
 end

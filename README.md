@@ -45,7 +45,7 @@ Returns a cell array of event types around which the current dataset was epoched
 
 
 ## get_iclabel_components
-Returns the indices of components classified by ICLabel, with a certain probability, as being of a certain type. It can select these components by threshold (i.e., all components which have more than x% probability of being a certain type), or by relative majority (i.e., all components which are more probable to be a certain type than any other type).
+Returns the indices of components classified by ICLabel, with a certain probability, as being of a certain type. It can select these components by threshold (i.e., all components which have more than x% probability of being a certain type), or by relative majority (i.e., all components which are more probable to be a certain type than any other type). It is additionally possible to exclude components with a residual variance in their dipole model above a certain threshold.
 
 ```matlab
 >> idx = get_iclabel_components(EEG, 'eye')
