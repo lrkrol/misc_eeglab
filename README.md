@@ -5,6 +5,7 @@
 - [create_eeglabdataset](#create_eeglabdataset) creates an EEGLAB dataset from a given data matrix
 - [get_events_timelocked](#get_events_timelocked) returns the event types around which the current dataset was epoched
 - [get_iclabel_components](#get_iclabel_components) returns indices of components classified by ICLabel
+- [insert_events_relative](#insert_events_relative) inserts new events before/after specified existing events
 - [move_events](#move_events) moves specified events in time, either freely or matching the latency of a following event
 - [photo2event](#photo2event) turns photodiode onsets/offsets into event markers
 - [plot_erp](#plot_erp) is an alternative function to plot ERPs, with some additional statistics
@@ -52,6 +53,15 @@ Returns the indices of components classified by ICLabel, with a certain probabil
 idx =
      1
      2
+```
+
+
+## insert_events_relative
+Inserts new events a given amount of time in seconds before or after specified existing events. 
+
+```matlab
+>> insert_events_relative(EEG, {'event1', 'event2'}, -1.5, 'dummy');
+inserted 7 'dummy' events
 ```
 
 
