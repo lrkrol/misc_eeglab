@@ -23,8 +23,8 @@
 %              'other', or 7
 %
 % Optional:
-%       threshold - type probability threshold value between 0 and 1.
-%                   default: relative majority is used instead of threshold
+%       threshold - type probability threshold value between 0 and 1, or []
+%                   default [] uses relative majority instead of threshold
 %       rvthreshold - residual variance threshold. if nonzero, components
 %                     with a residual variance in their dipole model above
 %                     the given threshold are excluded.
@@ -61,6 +61,7 @@
 % OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 % USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+
 function [idx, invidx] = get_iclabel_components(EEG, type, threshold, rvthreshold)
 
 if nargin < 3, threshold = []; end
@@ -71,7 +72,7 @@ if ~isfield(EEG.etc, 'ic_classification'), error('no field EEG.etc.ic_classifica
 
 % setting type
 if isnumeric(type) && floor(type) == type
-    if type > 7, error('unknown type: %d', type); end
+    if type < 1 || type > 7, error('unknown type: %d', type); end
 elseif ischar(type)
     switch type
         case 'brain', type = 1;
