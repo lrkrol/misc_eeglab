@@ -85,7 +85,7 @@ Due to noise, it is advisable to fine-tune the script’s parameters for your us
 
 It is possible to plot the output of the script for evaluation purposes.
 
-![photo2event plot](./docs/photo2event.png)
+![photo2event plot](./photo2event.png)
 
 The above image shows the first derivative of the photo sensor data in red. The calculated markers are shown and counted in grey. The script’s default threshold at 0.75 appears too high for this recording: a number of onsets are missed. Furthermore, because its onset was missed, it once happened that the offset of a stimulus was erroneously counted as its onset (marker number 4). In this case, we would thus lower the threshold and make sure the refractory period covers the length of the marker presentation.
 
@@ -109,7 +109,7 @@ Plots patterns, optionally resizing them based on a given weight vector. By defa
 plot_patterns(EEG.icawinv(:,1:6), EEG.chanlocs, 'weights', [3 5 6 6 5 3]);
 ```
 
-![plot_patterns example](./docs/plot_patterns.png)
+![plot_patterns example](./plot_patterns.png)
 
 It uses EEGLAB's `topoplot` and thus also EEGLAB's default colour scheme. The one used in the above image is one of [Kenneth Moreland's diverging colour maps](https://www.kennethmoreland.com/color-maps) generated using [multigradient](https://github.com/lrkrol/multigradient). See [Benedikt Ehinger's blog post on changing EEGLAB's default colour map](https://benediktehinger.de/blog/science/eeglab-gracefully-overwrite-the-default-colormap).
 
