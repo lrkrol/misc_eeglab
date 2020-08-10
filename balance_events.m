@@ -1,4 +1,4 @@
-% balance_events(EEG, eventtypes [, ignoredlabel])
+% [EEG, numbalanced] = balance_events(EEG, eventtypes [, ignoredlabel])
 %
 %       Balances the number of indicated events in an EEGLAB dataset by
 %       randomly relabelling events from the larger classes.

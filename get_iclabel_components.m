@@ -1,4 +1,4 @@
-% get_iclabel_components(EEG, type [, threshold, rvthreshold])
+% [idx, invidx] = get_iclabel_components(EEG, type [, threshold, rvthreshold])
 %
 %       Returns the indices of components which ICLabel has classified as
 %       a certain type. When a threshold is indicated between 0 and 1, all

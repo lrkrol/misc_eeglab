@@ -10,6 +10,7 @@
 - [photo2event](#photo2event) turns photodiode onsets/offsets into event markers
 - [plot_erp](#plot_erp) is an alternative function to plot ERPs, with some additional statistics
 - [plot_patterns](#plot_patterns) is a topoplot wrapper to plot patterns, optionally resized based on a given weight vector
+- [rename_events](#rename_events) gives specified event type(s) a new name
 - [study_delete_files](#study_delete_files) is a batch file to delete all files associated with a specified study design
 
 
@@ -111,6 +112,16 @@ plot_patterns(EEG.icawinv(:,1:6), EEG.chanlocs, 'weights', [3 5 6 6 5 3]);
 ![plot_patterns example](./docs/plot_patterns.png)
 
 It uses EEGLAB's `topoplot` and thus also EEGLAB's default colour scheme. The one used in the above image is one of [Kenneth Moreland's diverging colour maps](https://www.kennethmoreland.com/color-maps) generated using [multigradient](https://github.com/lrkrol/multigradient). See [Benedikt Ehinger's blog post on changing EEGLAB's default colour map](https://benediktehinger.de/blog/science/eeglab-gracefully-overwrite-the-default-colormap).
+
+
+## rename_events
+
+Renames all events of (a) given type(s) to the indicated new type.
+
+```matlab
+>> EEG = rename_events(EEG, {'event1a', 'event1b'}, 'event1');
+renamed 16 events to 'event1'
+```
 
 
 ## study_delete_files

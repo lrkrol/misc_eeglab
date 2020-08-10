@@ -1,4 +1,4 @@
-% insert_events_relative(EEG, anchor, relpos, newmarker)
+% EEG = insert_events_relative(EEG, anchor, relpos, newmarker)
 %
 %       Inserts new events at a given latency relative to existing events.
 %
