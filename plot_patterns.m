@@ -19,6 +19,8 @@
 %       titles - cell of pattern subplot titles (default: pattern numbers)
 %       camzoom - patterns will be zoomed in/out by this much by default,
 %                 allowing a tighter fit (default: 1.15)
+%       rowcols - [rows, cols] to indicate the number of rows and columns.
+%                 default: [], meaning it will be determined automatically
 %
 % Out:  
 %       h - handle of the generated figure
@@ -27,6 +29,8 @@
 %                    Team PhyPA, Biological Psychology and Neuroergonomics,
 %                    Berlin Institute of Technology
 
+% 2020-12-03 lrk
+%   - Added rowcols argument
 % 2018-08-10 mk & lrk
 %   - Set minimum possible weight to 1e-10 due to camzoom limitations
 % 2018-06-13 lrk
@@ -64,6 +68,7 @@ addParamValue(ip, 'colorbar', [], @isnumeric);
 addParamValue(ip, 'weights', ones(1, size(patterns, 2)), @isnumeric);
 addParamValue(ip, 'titles', num2cell(1:size(patterns, 2)), @iscell);
 addParamValue(ip, 'camzoom', 1.15, @isnumeric);
+addParamValue(ip, 'rowcols', [], @isnumeric);
 
 parse(ip, patterns, chanlocs, varargin{:})
 
@@ -75,6 +80,7 @@ plotcolorbar = ip.Results.colorbar;
 weights = abs(ip.Results.weights) ./ max(abs(ip.Results.weights)) .* ip.Results.camzoom;
 weightsign = sign(ip.Results.weights);
 titles = ip.Results.titles;
+rowcols = ip.Results.rowcols;
 
 % dealing with camzoom limitations
 weights(weights < 1e-10) = 1e-10;
@@ -99,8 +105,13 @@ end
 h = figure;
 
 % creating subplots
-ncols = ceil(sqrt(size(patterns, 2)));
-nrows = ceil(size(patterns, 2)/ncols);
+if isempty(rowcols)
+    ncols = ceil(sqrt(size(patterns, 2)));
+    nrows = ceil(size(patterns, 2)/ncols);
+else
+    nrows = rowcols(1);
+    ncols = rowcols(2);
+end
 fprintf('Plotting pattern ');
 for p = 1:size(patterns, 2)
     fprintf('%d ', p);
