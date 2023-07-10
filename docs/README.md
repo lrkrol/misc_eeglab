@@ -11,6 +11,7 @@
 - [plot_erp](#plot_erp) is an alternative function to plot ERPs, with some additional statistics
 - [plot_patterns](#plot_patterns) is a topoplot wrapper to plot patterns, optionally resized based on a given weight vector
 - [rename_events](#rename_events) gives specified event type(s) a new name
+- [replay_events](#replay_events) outputs a dataset's events to the console, either by manual progression or at a given speed
 - [study_delete_files](#study_delete_files) is a batch file to delete all files associated with a specified study design
 
 
@@ -121,6 +122,21 @@ Renames all events of (a) given type(s) to the indicated new type.
 ```matlab
 >> EEG = rename_events(EEG, {'event1a', 'event1b'}, 'event1');
 renamed 16 events to 'event1'
+```
+
+
+## replay_events
+
+Outputs the events in a dataset to the console along with their timestamp from the start of the data. Events are given either by manual progression, one at a time upon each button press, or at a given speed, where `1` is real time.
+
+```matlab
+>> replay_events(EEG, 0)
+      time   event
+    6.10 s   229
+    6.21 s   1000
+    7.10 s   grow085
+    8.05 s   jump045
+    ...
 ```
 
 
