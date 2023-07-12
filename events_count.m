@@ -1,4 +1,4 @@
-% [count, eventtypes] = count_events(EEG[, eventtypes])
+% [count, eventtypes] = events_count(EEG[, eventtypes])
 %
 %       Counts the number of all or specified events in an EEG dataset, and
 %       returns an array of these numbers plus a cell of the counted types.
@@ -17,12 +17,14 @@
 %
 % Usage example:
 %       >> count_events(EEG);
-%       >> [count, eventtypes] = count_events(EEG, {'event1', 'event2'});
+%       >> [count, eventtypes] = events_count(EEG, {'event1', 'event2'});
 % 
 %                    Laurens R Krol, 2016, 2017, 2018
 %                    Team PhyPA, Biological Psychology and Neuroergonomics,
 %                    Berlin Institute of Technology
 
+% 2023-07-12 lrk
+%   - Changed filename from count_events to events_count
 % 2018-01-16 lrk
 %   - Changed output from single struct to an array and a cell
 % 2017-03-09 lrk
@@ -42,7 +44,7 @@
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-function [count, eventtypes] = count_events(EEG, eventtypes)
+function [count, eventtypes] = events_count(EEG, eventtypes)
 
 allevents = {EEG.event.type};
 

@@ -1,4 +1,4 @@
-% events = get_events_timelocked(EEG)
+% events = events_get_timelocked(EEG)
 %
 %       Returns an array of event types around which the current dataset
 %       was epoched. Useful when working with someone else's epoched data
@@ -19,8 +19,10 @@
 %                    Berlin Institute of Technology
 %
 % Usage example:
-%       >> events = get_events_timelocked(EEG);
+%       >> events = events_get_timelocked(EEG);
 
+% 2023-07-12 lrk
+%   - Renamed from get_events_timelocked to events_get_timelocked
 % 2018-02-21 First version
 
 % This program is free software: you can redistribute it and/or modify
@@ -37,7 +39,7 @@
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function events = get_events_timelocked(EEG)
+function events = events_get_timelocked(EEG)
 
 firsteventlatency = EEG.srate * abs(EEG.xmin) + 1;
 

@@ -13,12 +13,14 @@
 %                    include. other events will be ignored.
 %
 % Usage example:
-%       >> count_events(EEG, {'event1', 'event3'});
+%       >> replay_events(EEG, 1000});
 % 
 %                    Laurens R. Krol, 2021
 %                    Neuroadaptive Human-Computer Interaction
 %                    Brandenburg Univesity of Technology
 
+% 2023-07-12 lrk
+%   - Renamed from replay_events to events_replay
 % 2021-09-03 First version
 
 % This program is free software: you can redistribute it and/or modify
@@ -34,7 +36,11 @@
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-function replay_events(EEG, speed, eventtypes)
+function events_replay(EEG, speed, eventtypes)
+
+% sorting events
+EEG = eeg_checkset(EEG, 'eventconsistency');
+EEG = pop_editeventvals(EEG, 'sort', { 'latency' 0 });
 
 % getting relevant event indices
 if nargin < 3

@@ -1,4 +1,4 @@
-% EEG = photo2event(EEG, channel, varargin)
+% EEG = events_insert_fromphotodiode(EEG, channel, varargin)
 %
 %       Takes an EEGLAB dataset that includes a photodiode channel and
 %       transforms the onsets/offsets of this photodiode into event
@@ -43,12 +43,14 @@
 % Usage example:
 %       To add events from photodiode channel at index 65 to EEG, and plot
 %       the results:
-%       >> EEG = photo2event(EEG, 65, 'plot', 1);
+%       >> EEG = events_insert_fromphotodiode(EEG, 65, 'plot', 1);
 % 
 %                    Copyright 2018 Marius Klug, Laurens R Krol
 %                    Biological Psychology and Neuroergonomics,
 %                    Berlin Institute of Technology
 
+% 2023-07-12 lrk
+%   - Renamed from photo2event to events_insert_fromphotodiode
 % 2018-10-22 lrk
 % - Updated plot and feedback to represent ignored events
 % 2018-08-21 lrk
@@ -74,7 +76,7 @@
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function EEG = photo2event(EEG, channel, varargin)
+function EEG = events_insert_fromphotodiode(EEG, channel, varargin)
 
 % parsing input
 p = inputParser;

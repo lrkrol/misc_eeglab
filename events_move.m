@@ -1,4 +1,4 @@
-% [EEG, diffs] = move_events(EEG, moveevents, target)
+% [EEG, diffs] = events_move(EEG, moveevents, target)
 %
 %       Given continuous data, moves indicated events, either 
 %       - forward in time to have the same latency as the nearest
@@ -34,11 +34,13 @@
 % Usage example:
 %       To move events 'A10', 'A15', and 'B10' forward to 'photo-onset'
 %       while ignoring 'B15':
-%       >> [EEG, diffs] = move_events(EEG, 'A1*|B10', 'photo-onset');
+%       >> [EEG, diffs] = events_move(EEG, 'A1*|B10', 'photo-onset');
 %
 %       To move all events 150 ms forward in time:
-%       >> [EEG, ~] = move_events(EEG, '.*', 150);
+%       >> [EEG, ~] = events_move(EEG, '.*', 150);
 
+% 2023-07-12 lrk
+%   - Renamed from move_events to events_move
 % 2019-03-06 lrk
 %   - Changed 'targetevents' to 'target', now also accepts numerical
 %     time to shift events a specified amount
@@ -58,7 +60,7 @@
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function [EEG, diffs] = move_events(EEG, moveevents, target)
+function [EEG, diffs] = events_move(EEG, moveevents, target)
 
 % sorting events
 if isfield(EEG.event, 'epoch')

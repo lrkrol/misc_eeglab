@@ -1,4 +1,4 @@
-% EEG = rename_events(EEG, oldmarker, newmarker)
+% EEG = events_rename(EEG, oldmarker, newmarker)
 %
 %       Renames all events of (a) given type(s) to the indicated new type.
 %
@@ -12,11 +12,15 @@
 %       EEG - EEGLAB dataset with indicated events renamed
 %
 % Usage example:
-%       >> EEG = rename_events(EEG, {'event1a', 'event1b'}, 'event1');
+%       >> EEG = events_rename(EEG, {'event1a', 'event1b'}, 'event1');
 % 
 %                       Laurens R. Krol
 %                       Neuroadaptive Human-Computer Interaction
 %                       Brandenburg University of Technology
+
+% 2023-07-12 lrk
+%   - Renamed from rename_events to events_rename
+% 2020 First version
 
 % Copyright 2020 Laurens R. Krol
 
@@ -39,7 +43,7 @@
 % OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 % USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function EEG = rename_events(EEG, oldmarker, newmarker)
+function EEG = events_rename(EEG, oldmarker, newmarker)
 
 idx = ismember({EEG.event.type}, oldmarker);
 [EEG.event(idx).type] = deal(newmarker);

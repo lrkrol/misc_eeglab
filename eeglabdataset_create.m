@@ -1,4 +1,4 @@
-% EEG = create_eeglabdataset(data, srate, varargin)
+% EEG = eeglabdataset_create(data, srate, varargin)
 %
 %       Creates a dataset in EEGLAB format from given continuous or epoched
 %       data.
@@ -23,13 +23,15 @@
 %       EEG - dataset in EEGLAB format
 %
 % Usage example:
-%       >> EEG = create_eeglabdataset(randn(3, 512, 100), 512, ...
+%       >> EEG = eeglabdataset_create(randn(3, 512, 100), 512, ...
 %          'chanlabels', {'C1', 'C2', 'C3'}, 'xmin', -0.2)
 % 
 %                    Copyright 2015, 2017 Laurens R Krol
 %                    Team PhyPA, Biological Psychology and Neuroergonomics,
 %                    Berlin Institute of Technology
 
+% 2023-07-12 lrk
+%   - Renamed from create_eeglabdataset to eeglabdataset_create
 % 2017-06-14 lrk
 %   - Now accepts both chanlocs structure and cell of channel labels
 %   - Added markers
@@ -50,7 +52,7 @@
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function EEG = create_EEGLABdataset(data, srate, varargin)
+function EEG = eeglabdataset_create(data, srate, varargin)
 
 % parsing input
 p = inputParser;

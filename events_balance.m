@@ -1,4 +1,4 @@
-% [EEG, numbalanced] = balance_events(EEG, eventtypes [, ignoredlabel])
+% [EEG, numbalanced] = events_balance(EEG, eventtypes [, ignoredlabel])
 %
 %       Balances the number of indicated events in an EEGLAB dataset by
 %       randomly relabelling events from the larger classes.
@@ -17,11 +17,15 @@
 %                     each of the indicated event types
 %
 % Usage example:
-%       >> EEG = balance_events(EEG, {'event1', 'event2'})
+%       >> EEG = events_balance(EEG, {'event1', 'event2'})
 % 
 %                       Laurens R. Krol
 %                       Neuroadaptive Human-Computer Interaction
 %                       Brandenburg University of Technology
+
+% 2023-07-12 lrk
+%   - Changed name from balance_events to events_balance
+% 2020 First version
 
 % Copyright 2020 Laurens R. Krol
 
@@ -44,7 +48,7 @@
 % OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 % USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function [EEG, numbalanced] = balance_events(EEG, eventtypes, ignoredlabel)
+function [EEG, numbalanced] = events_balance(EEG, eventtypes, ignoredlabel)
 
 if nargin < 3, ignoredlabel = 'ignoredevent'; end
 
